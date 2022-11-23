@@ -3,13 +3,14 @@ services:
   name: minio
   healthCheckPath: /minio/health/live
   env: docker
+  region: frankfurt
+  plan: free
   dockerfilePath: ./Dockerfile
   dockerContext: .
   autoDeploy: false
-  disk:
-    name: data
-    mountPath: /data
   envVars:
+  - key: TAILSCALE_AUTHKEY
+    sync: false
   - key: MINIO_ROOT_USER
     generateValue: true
   - key: MINIO_ROOT_PASSWORD
